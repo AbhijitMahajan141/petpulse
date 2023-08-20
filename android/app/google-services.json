@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "317771017811",
+    "project_id": "petpulse-5b5ce",
+    "storage_bucket": "petpulse-5b5ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317771017811:android:aa015ea3b297615768a0a6",
+        "android_client_info": {
+          "package_name": "com.petpulse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317771017811-9sj7scf7v4f7pncdln4kvvrvon70gooc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKFS-qoFoeMg4lGmsedJhdH3BaF_37FvI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317771017811-9sj7scf7v4f7pncdln4kvvrvon70gooc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
