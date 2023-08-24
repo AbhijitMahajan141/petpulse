@@ -1,27 +1,23 @@
-import { StyleSheet, Text, View,BackHandler, Pressable, Image, Modal } from 'react-native'
+import { StyleSheet, Text, View, Pressable, Image, Modal } from 'react-native'
 import React,{useState} from 'react'
-import { useFocusEffect } from '@react-navigation/native';
 import PostsSection from '../../components/PostsSection';
 import ShortsSection from '../../components/ShortsSection';
 import UploadModel from '../../components/UploadModel';
 import { Logo, constantStyles } from '../../constants';
+import Snackbar from 'react-native-snackbar';
+// import { BackHandle } from '../../components/BackHandler';
 
-const ViewScreen = ({navigation}:any) => {
+const ViewScreen: React.FC = () => {
 
-    useFocusEffect(() => {
-    const onBackPress = () => {
-      // Navigate to a different screen instead of allowing the back action
-      navigation.navigate('Home'); // Replace 'Home' with the screen you want to navigate to
-      return true; // Prevent default back behavior
-    };
-
-    BackHandler.addEventListener('hardwareBackPress', onBackPress);
-
-    return () => BackHandler.removeEventListener('hardwareBackPress', onBackPress);
-  });
+  //  BackHandle({navigation});
 
   const [modalVisible, setModalVisible] = useState(false);
   const [button,setButton] = useState("posts");
+
+  const closeModal = () => {
+    setModalVisible(false);
+    Snackbar.show({text:"Post Uploaded Successfully!",duration:Snackbar.LENGTH_LONG}); 
+  };
 
   return (
     <View style={[constantStyles.container,{justifyContent:"flex-start"}]}>
@@ -30,24 +26,25 @@ const ViewScreen = ({navigation}:any) => {
         <Pressable onPress={()=>setModalVisible(true)}>
           <Image 
             source={require("../../assets/upload.png")} 
-            style={{width:35,height:35}} />
+            style={{width:40,height:40}} />
         </Pressable>
       </View>
       
       <View style={[styles.topSection,styles.buttonSection]}>
         <Pressable
           onPress={()=>setButton("posts")} 
-          style={[constantStyles.buttonContainer,constantStyles.goldenBackgroundColor,
-            button === "posts" && {elevation:5,shadowColor: '#000000', shadowOffset: {width: 0, height: 2}, shadowOpacity: 0.5,}]}>
-              <Text style={constantStyles.secondaryText}>Posts</Text>
+          style={[constantStyles.buttonContainer,constantStyles.goldenBackgroundColor,{borderBottomEndRadius:0,borderTopEndRadius:0},
+            button === "posts" && {backgroundColor:"#dbb702"}]}> 
+            {/* ,shadowColor: '#000000', shadowOffset: {width: 0, height: 2}, shadowOpacity: 0.5, dbb702*/}
+              <Text style={button === "posts" ? constantStyles.pureWhite : constantStyles.secondaryText}>Posts</Text>
             {/* <Image source={require("../../assets/camera.png")} style={{width:50,height:50}}/> */}
         </Pressable>
         <Pressable 
           onPress={()=>setButton("shorts")}
-          style={[constantStyles.buttonContainer,constantStyles.goldenBackgroundColor,
-            button === "shorts" && {elevation:5,shadowColor: '#000000', shadowOffset: {width: 0, height: 2}, shadowOpacity: 0.5,}]}
+          style={[constantStyles.buttonContainer,constantStyles.goldenBackgroundColor,{borderBottomStartRadius:0,borderTopStartRadius:0},
+            button === "shorts" && {backgroundColor:"#dbb702"}]}
           >
-            <Text style={constantStyles.secondaryText}>Shorts</Text>
+            <Text style={button === "shorts" ? constantStyles.pureWhite : constantStyles.secondaryText}>Shorts</Text>
             {/* <Image source={require("../../assets/reels.png")} style={{width:50,height:50}} /> */}
         </Pressable>
       </View>
@@ -67,7 +64,7 @@ const ViewScreen = ({navigation}:any) => {
         }}>
           <View style={styles.centeredView}>
             <View style={[styles.modalView,constantStyles.formColor]}>
-              <UploadModel/>
+              <UploadModel closeModal={closeModal} />
               <Pressable
                 style={[constantStyles.buttonContainer, constantStyles.tomatoBackgroundColor]}
                 onPress={() => setModalVisible(!modalVisible)}>
@@ -95,10 +92,11 @@ const styles = StyleSheet.create({
   },
   buttonSection:{
     justifyContent:"center",
-    columnGap:10
+    columnGap:1
   },
   mainSection:{
     height:"100%",
+    width:"95%",
     marginTop:10,
     borderRadius:5
   },
@@ -112,8 +110,8 @@ const styles = StyleSheet.create({
     // margin: 20,
     display:"flex",
     justifyContent:"space-between",
-    width:"90%",
-    height:"95%",
+    width:"95%",
+    height:"98%",
     padding:10,
     borderRadius: 10,
     // padding: 35,

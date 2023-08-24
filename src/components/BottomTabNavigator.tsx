@@ -11,7 +11,7 @@ const Tab = createMaterialBottomTabNavigator();
 const BottomTabNavigator: React.FC = () => {
 
     const theme = useTheme();
-    theme.colors.secondaryContainer = "transperent"
+    theme.colors.secondaryContainer = "transperent";
     return (
     <Tab.Navigator 
         activeColor='#8D6E63'
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     tabBar:{
         alignSelf:"center",
         width:"100%",
+        backgroundColor:"#FFF8E1"
     },
     tabIcon: {
         width: 30,

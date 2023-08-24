@@ -1,13 +1,14 @@
 import { Pressable, Text, TextInput, View, ScrollView,KeyboardAvoidingView,ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import auth from "@react-native-firebase/auth"
-import firestore, { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
+import { FirebaseFirestoreTypes } from '@react-native-firebase/firestore';
 import Snackbar from 'react-native-snackbar';
 import { Logo, constantStyles } from '../../constants';
 import { useDispatch,useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../redux/store';
 import { setLoading } from '../../redux/reducers/loadingSlice';
 import { setUser } from '../../redux/reducers/usersSlice';
+import { fetchUserProfile } from '../../firebase/DbAccess';
 
 const ProfileScreen = () => {
 
@@ -29,9 +30,11 @@ const ProfileScreen = () => {
     dispatch(setLoading(true));
     const getProfile = async () => {
       if(user){
-        const snapShot = await firestore().collection('users').doc(user).get();
-        setUserProfile(snapShot.data());
-        dispatch(setLoading(false));
+        fetchUserProfile(user).then((snapShot)=>{
+          setUserProfile(snapShot)
+          dispatch(setLoading(false));
+        })
+        
       }else{
         Snackbar.show({text:"User Not Found! Please Login.",duration:Snackbar.LENGTH_LONG});
         dispatch(setLoading(false));

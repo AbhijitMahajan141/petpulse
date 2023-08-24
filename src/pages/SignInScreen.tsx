@@ -1,12 +1,12 @@
-import { StyleSheet, Text, TextInput, View,KeyboardAvoidingView, Pressable,BackHandler, Image, Platform,ActivityIndicator,ScrollView } from 'react-native'
+import { StyleSheet, Text, TextInput, View, KeyboardAvoidingView, Pressable, Image, Platform,ActivityIndicator,ScrollView } from 'react-native'
 import React, { useState } from 'react'
-import { useFocusEffect } from '@react-navigation/native';
 import Snackbar from 'react-native-snackbar'
 import auth from '@react-native-firebase/auth';
 import { Logo, constantStyles } from '../constants';
 import { useDispatch,useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../redux/store';
 import { setLoading } from '../redux/reducers/loadingSlice';
+import { BackHandle } from '../components/BackHandler';
 
 const SignInScreen = ({navigation}:any) => {
   
@@ -16,20 +16,12 @@ const SignInScreen = ({navigation}:any) => {
   const [email,setEmail] = useState("");
   const [password,setPassword] = useState("");
 
-  useFocusEffect(() => {
-    const onBackPress = () => {
-      // Navigate to a different screen instead of allowing the back action
-      navigation.navigate('Signin'); // Replace 'Home' with the screen you want to navigate to
-      return true; // Prevent default back behavior
-    };
-
-    BackHandler.addEventListener('hardwareBackPress', onBackPress);
-
-    return () => BackHandler.removeEventListener('hardwareBackPress', onBackPress);
-  });
+  BackHandle({navigation});
 
   const handleSignupPress = () =>{
-    navigation.navigate("Signup")
+    navigation.navigate("Signup");
+    setEmail("");
+    setPassword("");
   }
 
   const handleSignin = async () => {
