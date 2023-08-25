@@ -10,7 +10,7 @@ An All in one Pet app where users share Memorable, adorable and funny videos or 
 
 ### ScreenShots as of current development stage.
 
-![SplashScreen](https://github.com/AbhijitMahajan141/petpulse/assets/82993630/1d79a918-f0d7-4e26-948c-f0c54bd97f1f)
+![SplashScreen](https://github.com/AbhijitMahajan141/petpulse/assets/82993630/1d79a918-f0d7-4e26-948c-f0c54bd97f1f){:height="200px" width="100px"}
 ![Login](https://github.com/AbhijitMahajan141/petpulse/assets/82993630/af55de1a-0bd5-44d2-9c65-45fbae35fcc2)
 ![Login2](https://github.com/AbhijitMahajan141/petpulse/assets/82993630/fcaf3c56-8d77-4b14-ad3c-0a7f852c7fce)
 ![Signup](https://github.com/AbhijitMahajan141/petpulse/assets/82993630/c8f98642-4e08-44ed-9b6b-3dcdc0bcf687)
