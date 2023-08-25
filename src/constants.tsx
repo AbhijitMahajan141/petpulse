@@ -37,7 +37,8 @@ export const constantStyles = StyleSheet.create({
     borderTopColor:"#2f2f2f",
     borderRightColor:"#2f2f2f",
     borderLeftColor:"#2f2f2f",
-    marginBottom:10
+    marginBottom:10,
+    color:"#fff"
   },
   buttonContainer:{
     padding:10,

@@ -7,9 +7,6 @@ import { setLoading } from '../redux/reducers/loadingSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../redux/store';
 
-// const NUM_COLUMNS = 3;
-// const ITEM_MARGIN = 8;
-
 interface Post{
   fileName:string,
   tagLine:string,
@@ -19,7 +16,7 @@ interface Post{
 
 const PostsSection = () => {
 
-  const user = useSelector((state:RootState) => state.user.user);
+  // const user = useSelector((state:RootState) => state.user.user);
   const loading = useSelector((state:RootState) => state.loading.loading);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -28,9 +25,11 @@ const PostsSection = () => {
 
   useEffect(()=>{
     const fetchPosts = async () =>{
+      
       dispatch(setLoading(true));
       try {
-        const posts = await getAllPosts();
+        const section = "posts";
+        const posts = await getAllPosts(section);
         // console.log(posts);
         if(posts){
           setPosts(posts);
@@ -38,33 +37,55 @@ const PostsSection = () => {
       } catch (error) {
         console.log(error);
       }
+      dispatch(setLoading(false));
     }
-    fetchPosts().then(()=>dispatch(setLoading(false)));
+    fetchPosts();
   },[]);
+
+  const NUM_COLUMNS = 3;
+  const SCREEN_WIDTH = Dimensions.get('window').width - 55;
+  const ITEM_MARGIN = 4;
+  const itemWidth = (SCREEN_WIDTH - (NUM_COLUMNS - 1) * ITEM_MARGIN) / NUM_COLUMNS;
+
+  const renderGridItem = ({ item }: { item: Post }) => (
+    <FastImage
+      source={{ uri: item.downloadUrl,priority: FastImage.priority.high, }}
+      style={{ width: itemWidth, height: itemWidth, margin: ITEM_MARGIN, borderRadius: 5 }}
+      resizeMode={FastImage.resizeMode.cover}
+    />
+  );
 
   return (
     <View style={[constantStyles.container,styles.container]}>
-      <Text>All Posts</Text>
+      <Text style={constantStyles.pureWhite}>All Posts</Text>
       {
         loading ? < ActivityIndicator size="large"/> 
         :
         <FlatList
-        style={styles.flatlist}
-        // horizontal={true}
-        data={posts}
-        keyExtractor={(post) => post.fileName} // Assuming each post has a unique ID
-        renderItem={({ item: post }) => (
-          <FastImage
-            source={{ uri: post.downloadUrl }}
-            style={{ width: 100, height: 100 }} 
-            resizeMode={FastImage.resizeMode.cover}
-            
+          style={styles.flatlist}
+          data={chunkArray(posts, NUM_COLUMNS)}
+          keyExtractor={(chunk) => chunk.map((post) => post.fileName).join('_')}
+            renderItem={({ item }) => (
+              <View style={styles.rowContainer}>
+                {item.map((post) => (
+                  <View key={post.fileName}>
+                    {renderGridItem({ item: post })}
+                  </View>
+                ))}
+              </View>
+            )}
         />
-      )}
-    />
     }
     </View>
   )
+}
+
+function chunkArray(array: any[], chunkSize: number) {
+  const result = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+    result.push(array.slice(i, i + chunkSize));
+  }
+  return result;
 }
 
 export default PostsSection
@@ -79,5 +100,10 @@ const styles = StyleSheet.create({
   flatlist:{
     width:"100%",
     display:"flex",
-  }
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    // justifyContent: 'space-between',
+  },
+ 
 })

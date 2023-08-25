@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
     flexDirection:"row",
     alignItems:"center",
     justifyContent:"space-between",
-    marginTop:10,
+    // marginTop:10,
   },
   buttonSection:{
     justifyContent:"center",
     columnGap:1
   },
   mainSection:{
-    height:"100%",
+    height:"85%",
     width:"95%",
     marginTop:10,
     borderRadius:5

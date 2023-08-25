@@ -58,6 +58,8 @@ export const fetchUserProfile = async (user:string) => {
 type File ={
   uri:string | undefined,
   type:string | undefined,
+  width:number | undefined,
+  height:number | undefined,
 }
 
 export const savePost = async ({
@@ -76,6 +78,8 @@ export const savePost = async ({
       uri:selectedFile.uri,
       tagLine,
       user,
+      width:selectedFile.width,
+      height:selectedFile.height,
     }
     
     const storageRef = storage().ref().child(`posts/${postData.fileName}`);
@@ -94,6 +98,8 @@ export const savePost = async ({
           user:postData.user,
           downloadUrl,
           fileType:postData.type,
+          width:postData.width,
+          height:postData.height
           // createdAt: firestore.FieldValue.serverTimestamp(),
         });
         if (!userDocSnap.exists) {
@@ -109,13 +115,22 @@ export const savePost = async ({
   }
 }
 
-export const getAllPosts = async () => {
+export const getAllPosts = async (section:string) => {
     try {
-      const snapshot = await firestore().collection('posts').limit(10).get();
-      const posts = snapshot.docs.map((doc)=> doc.data());
-      const extractedPosts = posts.flatMap((response) => response.posts);
-        // console.log(extractedPosts);
-      return extractedPosts;
+        const snapshot = await firestore().collection('posts').limit(10).get();
+        const posts = snapshot.docs.map((doc)=> doc.data());
+        const extractedPosts = posts.flatMap((response) => response.posts);
+        const filteredPosts = extractedPosts.filter(post => post.fileType === 'image/jpeg');
+        const filteredShorts = extractedPosts.filter(post => post.fileType === 'video/mp4');
+          // console.log(filteredPosts);
+          // console.log(filteredShorts);
+        if(section === "shorts"){
+          return filteredShorts;
+        }else if(section === "posts"){
+          return filteredPosts;
+        }else{
+          return null;
+        }
       }
       catch (error) {
       Snackbar.show({text:`Error in getting all posts:${error}`,duration:Snackbar.LENGTH_LONG});
