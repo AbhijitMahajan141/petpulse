@@ -1,79 +1,20 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# PetPulse
+An All in one Pet app where users share Memorable, adorable and funny videos or images of their pet. The Usual social media apps contain a lot of negetivity and resentment, and basically is a emotional roller coaster. Here in PetPulse we only house pet videos which will help uplift your spirit and boost your cerotonin levels. Enjoy!!!
 
-# Getting Started
+## Features
+1. Secure and validated login functionality.
+2. Profile Section.
+3. Home Screen which contains Posts(Images Shared by Users) and Shorts(Videos shared by users).
+4. users will be able to upload data right from this Screen through a beautiful Model View. I will be training an object detection model and inject it through an api to check if uploaded video/photo contains an animal or not.
+5. The Care Screen will be a one stop shop for all the need of their pets like, food products, toys, Health Care products, etc. 
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
-
-## Step 1: Start the Metro Server
-
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
-
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+### ScreenShots as of current development stage.
+<img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/1d79a918-f0d7-4e26-948c-f0c54bd97f1f" alt="alt text" width="300" height="600">
+<img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/af55de1a-0bd5-44d2-9c65-45fbae35fcc2" alt="alt text" width="300" height="600">
+<img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/fcaf3c56-8d77-4b14-ad3c-0a7f852c7fce" alt="alt text" width="300" height="600">
+<img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/c8f98642-4e08-44ed-9b6b-3dcdc0bcf687" alt="alt text" width="300" height="600">
+<img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/b3c7f805-08b2-416b-a921-49e673685d20" alt="alt text" width="300" height="600">
+<img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/3c261549-f6f0-4b3b-8f21-b7f2ac031dbe" alt="alt text" width="300" height="600">
+<img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/627de33c-d2ca-408c-962c-189df1e4fcee" alt="alt text" width="300" height="600">
+<img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/7fc7970c-1410-4576-879b-9f157576114f" alt="alt text" width="300" height="600">
+<img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/13f3f22d-cf0f-493e-96ef-7cf0ab14868c" alt="alt text" width="300" height="600">
