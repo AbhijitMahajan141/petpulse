@@ -1,10 +1,10 @@
 import React,{useState} from 'react'
 import { StyleSheet, Text, View,Pressable,Image,ScrollView,TextInput,ActivityIndicator, KeyboardAvoidingView } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux';
-import { setLoading } from '../redux/reducers/loadingSlice';
-import { AppDispatch, RootState } from '../redux/store';
-import { savePost } from '../firebase/DbAccess';
-import { Logo, constantStyles } from '../constants'
+import { setLoading } from '../../redux/reducers/loadingSlice';
+import { AppDispatch, RootState } from '../../redux/store';
+import { savePost } from '../../firebase/DbAccess';
+import { Logo, constantStyles } from '../../constants'
 import { Capture, Upload } from './UploadSelection';
 import Snackbar from 'react-native-snackbar';
 import Video from 'react-native-video';

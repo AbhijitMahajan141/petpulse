@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Pressable, Image, Modal } from 'react-native'
 import React,{useState} from 'react'
-import PostsSection from '../../components/PostsSection';
-import ShortsSection from '../../components/ShortsSection';
-import UploadModel from '../../components/UploadModel';
+import PostsSection from '../../components/ViewScreenComponents/PostsSection';
+import ShortsSection from '../../components/ViewScreenComponents/ShortsSection';
+import UploadModel from '../../components/ViewScreenComponents/UploadModel';
 import { Logo, constantStyles } from '../../constants';
 import Snackbar from 'react-native-snackbar';
 // import { BackHandle } from '../../components/BackHandler';

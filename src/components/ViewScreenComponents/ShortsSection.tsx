@@ -1,11 +1,11 @@
 import { ScrollView, StyleSheet, Text, View, ActivityIndicator, Dimensions, FlatList, InteractionManager } from 'react-native'
 import React, { useState, useEffect,useCallback } from 'react'
-import { constantStyles } from '../constants'
+import { constantStyles } from '../../constants'
 import Video from 'react-native-video'
 import { useDispatch, useSelector } from 'react-redux'
-import { AppDispatch, RootState } from '../redux/store'
-import { setLoading } from '../redux/reducers/loadingSlice'
-import { getAllPosts } from '../firebase/DbAccess'
+import { AppDispatch, RootState } from '../../redux/store'
+import { setLoading } from '../../redux/reducers/loadingSlice'
+import { getAllPosts } from '../../firebase/DbAccess'
 
 const SCREEN_HEIGHT = Dimensions.get('window').height - 200;
 const SCREEN_WIDTH = Dimensions.get('window').width - 40;
@@ -28,7 +28,7 @@ const VideoItem = ({ short, loading }: { short: Shorts; loading: boolean }) => {
   return(
   <View key={short.fileName} style={{width:"100%",height:SCREEN_HEIGHT}}>
   <View style={styles.individualVideo}>
-    <Text>{short.user}</Text>
+    <Text>{short.fileName}</Text>
     {loading && !videoLoaded ? (
       <ActivityIndicator size="large" />
     ) : (
@@ -45,7 +45,7 @@ const VideoItem = ({ short, loading }: { short: Shorts; loading: boolean }) => {
     )}
     <View style={styles.postText}>
       <Text>
-        {short.fileName} : {short.tagLine}
+        {short.tagLine}
       </Text>
     </View>
   </View>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   vid:{
     width:SCREEN_WIDTH,
-    height:600,
+    height:SCREEN_HEIGHT-80,
     borderRadius:5
   },
   individualVideo:{
