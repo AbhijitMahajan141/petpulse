@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, Image, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, Image, Pressable } from 'react-native'
 import React from 'react'
 import { toys } from '../../data'
 import { constantStyles } from '../../constants'
@@ -9,11 +9,23 @@ const ToyComponent = ({imageHeight}:any) => {
         {toys.map((toy) => (
           <View key={toy.id} style={styles.card}>
             <Text style={[{padding:5},constantStyles.pureWhite]}>{toy.name}</Text>
-            <Image source={toy.image} alt={`${toy.name}`} style={{width:"100%",height:imageHeight,backgroundColor:"white"}} resizeMode='contain' />
-            <View style={{alignSelf:"flex-start", paddingHorizontal:10,paddingVertical:5}}>
-                <Text style={[constantStyles.primaryText,{fontWeight:"300"}]} >{toy.desc}</Text>
-                <Text style={constantStyles.primaryText}>₹ {toy.price}</Text>
-                <Text style={constantStyles.primaryText}>{toy.paws}</Text>
+            <Image source={toy.image} alt={`${toy.name}`} style={{width:"96%",height:imageHeight,backgroundColor:"white",borderRadius:5}} resizeMode='contain' />
+            <View style={{width:"100%",alignSelf:"flex-start", paddingHorizontal:10,paddingVertical:5}}>
+              <Text style={[constantStyles.primaryText,{fontWeight:"300"}]} >{toy.desc}</Text>
+                <View style={{display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+                  <View>
+                  <Text style={constantStyles.greenColor}>₹ {toy.price}</Text>
+                  <View style={{display:"flex",flexDirection:"row",alignItems:"center"}}>
+                    <Text style={[constantStyles.goldenColor,{marginRight:5}]}>{toy.paws}</Text>
+                    <Image source={require('../../assets/star.png')} alt='Rating' style={{width:25,height:25}} />
+                  </View>
+                  </View>
+                  <View>
+                  <Pressable style={[constantStyles.greenBgColor,{paddingHorizontal:20,paddingVertical:10,borderRadius:5}]} >
+                    <Text style={constantStyles.pureWhite}>Buy</Text>
+                  </Pressable>
+                  </View>
+                </View>
             </View>
           </View>
         ))}

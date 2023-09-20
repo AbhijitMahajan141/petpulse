@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Logo, constantStyles } from '../../constants'
 import ToyComponent from '../../components/CareScreenComponent/ToyComponent';
 import FoodComponent from '../../components/CareScreenComponent/FoodComponent';
+import VetComponent from '../../components/CareScreenComponent/VetComponent';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height - 200;
 const imageHeight = (Dimensions.get('window').height /4);
@@ -53,7 +54,8 @@ const CareScreen = () => {
           <Text style={constantStyles.pureWhite}>Consultant</Text>
         </Pressable> */}
       </View>
-      <View style={{margin:10,width:"90%",height:SCREEN_HEIGHT}}>
+      <View style={{margin:10,width:"95%",height:SCREEN_HEIGHT}}>
+          {button === Buttons.vet && <VetComponent/>}
           {button === Buttons.toy && <ToyComponent imageHeight={imageHeight} />}
           {button === Buttons.food && <FoodComponent imageHeight={imageHeight} />}
       </View>

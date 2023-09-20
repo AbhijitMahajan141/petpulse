@@ -3,7 +3,7 @@ export const toys = [
         id:1,
         name:"Ball Toy",
         image:require('./assets/ballToy.jpg'),
-        desc:"Your pet will love this toy.",
+        desc:"A perfect toy designed scientifically for your furred one's.",
         price:"200",
         paws:4,
     },
@@ -82,4 +82,50 @@ export const food = [
         price:"2250",
         paws:4.6,
     },
+]
+
+export const vets = [
+    {
+        id:1,
+        img:require('./assets/vet4.png'),
+        name:"Paws & Whiskers Veterinary Clinic",
+        address:"123 Pet Street Animalville, Imaginaryland 54321",
+        contact:"234-567",
+    },
+    {
+        id:2,
+        img:require('./assets/vet3.png'),
+        name:"Happy Tails Animal Hospital",
+        address:"456 Tail Avenue Petropolis, Dreamland 98765",
+        contact:"678-678",
+    },
+    {
+        id:3,
+        img:require('./assets/vet5.png'),
+        name:"Furry Friends Veterinary Care",
+        address:"789 Fur Lane Critterville, Fantasyland 24680",
+        contact:"456-784",
+    },
+    {
+        id:4,
+        img:require('./assets/vet2.png'),
+        name:"Whisker Haven Vet Center",
+        address:"101 Whisker Way Kittyville, Wonderland 13579",
+        contact:"234-578",
+    },
+    {
+        id:5,
+        img:require('./assets/vet1.png'),
+        name:"Feathered Friends Bird Clinic",
+        address:"222 Avian Avenue Birdtown, Imaginaria 86420",
+        contact:"789-345",
+    },
+    {
+        id:6,
+        img:require('./assets/vet6.png'),
+        name:"Exo-Scaly Creatures Vet Clinic",
+        address:"333 Scales Street Reptilia City, Mythscape 70707",
+        contact:"345-567",
+    },
+
 ]

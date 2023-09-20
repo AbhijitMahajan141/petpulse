@@ -88,6 +88,7 @@ export const constantStyles = StyleSheet.create({
     color:"#000000"
   },
 
-  greenColor:{backgroundColor: "#3CB371"}
+  greenColor:{color: "#3CB371"},
+  greenBgColor:{backgroundColor: "#3CB371"}
   // secondaryColor:{color:"#87CEEB"}
 })
