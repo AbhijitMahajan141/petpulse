@@ -2,11 +2,42 @@ import { StyleSheet, Text, View, ScrollView, Image, Pressable } from 'react-nati
 import React from 'react'
 import { food } from '../../data'
 import { constantStyles } from '../../constants'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '../../redux/store'
+import { addToCart } from '../../redux/reducers/cartSlice'
+import Snackbar from 'react-native-snackbar'
 
-const FoodComponent = ({imageHeight}:any) => {
+interface productType {
+  id:number,
+  name:string,
+  price:number,
+  quantity?:number,
+}
+
+interface dataType {
+    
+}
+
+type ProductProps = {
+    imageHeight:any,
+    data:{id:number,name:string,image:any,desc:string,price:number,paws:number}[],
+}
+
+const ProductsComponent = ({imageHeight,data}:ProductProps) => {
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleBuy = (f:productType) => {
+    dispatch(addToCart({id:f.id,name:f.name,price:f.price,quantity:1}));
+    Snackbar.show({
+          text: 'Item Added to Cart!',
+          duration: Snackbar.LENGTH_LONG,
+        });
+  }
+
   return (
     <ScrollView >
-        {food.map((f) => (
+        {data.map((f) => (
           <View key={f.id} style={styles.card}>
             <Text style={[{padding:5,fontSize:18},constantStyles.pureWhite]}>{f.name}</Text>
             <Image source={f.image} alt={`${f.name}`} style={{width:"100%",height:imageHeight,backgroundColor:"white"}} resizeMode='contain' />
@@ -21,7 +52,8 @@ const FoodComponent = ({imageHeight}:any) => {
                   </View>
                   </View>
                   <View>
-                  <Pressable style={[constantStyles.greenBgColor,{paddingHorizontal:20,paddingVertical:10,borderRadius:5}]} >
+                  <Pressable style={[constantStyles.greenBgColor,{paddingHorizontal:20,paddingVertical:10,borderRadius:5}]} 
+                    onPress={()=>handleBuy(f)}>
                     <Text style={constantStyles.pureWhite}>Buy</Text>
                   </Pressable>
                   </View>
@@ -33,7 +65,7 @@ const FoodComponent = ({imageHeight}:any) => {
   )
 }
 
-export default FoodComponent
+export default ProductsComponent
 
 const styles = StyleSheet.create({
     card:{

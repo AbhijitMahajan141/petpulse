@@ -1,9 +1,11 @@
-import { Pressable, StyleSheet, Text, View, Dimensions } from 'react-native'
+import { Pressable, StyleSheet, Text, View, Dimensions, Image, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { Logo, constantStyles } from '../../constants'
-import ToyComponent from '../../components/CareScreenComponent/ToyComponent';
-import FoodComponent from '../../components/CareScreenComponent/FoodComponent';
 import VetComponent from '../../components/CareScreenComponent/VetComponent';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import ProductsComponent from '../../components/CareScreenComponent/ProductsComponent';
+import { food, toys } from '../../data';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height - 200;
 const imageHeight = (Dimensions.get('window').height /4);
@@ -17,12 +19,24 @@ enum Buttons {
 
 const CareScreen = () => {
 
+  const cart = useSelector((state:RootState) => state.cart.items);
+  const itemsInCart = useSelector((state:RootState) => state.cart.items.length);
+
   const [button,setButton] = useState(Buttons.toy);
 
   return (
     <View style={[constantStyles.container,{justifyContent:"flex-start"}]}>
-      <View>
+      <View style={styles.topSection}>
         <Logo logoSize={30}/>
+        <Pressable 
+        onPress={()=>{
+          console.log(cart);
+        }}
+        style={styles.cartContainer}
+        >
+          <Text style={styles.cartCount}>{itemsInCart}</Text>
+          <Image source={require('../../assets/cart.png')} alt='Cart' style={{width:35,height:35}} />
+        </Pressable>
       </View>
       <View style={styles.btnContainer}>
         <Pressable
@@ -56,8 +70,8 @@ const CareScreen = () => {
       </View>
       <View style={{margin:10,width:"95%",height:SCREEN_HEIGHT}}>
           {button === Buttons.vet && <VetComponent/>}
-          {button === Buttons.toy && <ToyComponent imageHeight={imageHeight} />}
-          {button === Buttons.food && <FoodComponent imageHeight={imageHeight} />}
+          {button === Buttons.toy && <ProductsComponent imageHeight={imageHeight} data={toys} />}
+          {button === Buttons.food && <ProductsComponent imageHeight={imageHeight} data={food}/>}
       </View>
     </View>
   )
@@ -72,6 +86,28 @@ const styles = StyleSheet.create({
     flexDirection:"row",
     alignItems:"center",
     justifyContent:"center",
-
+  },
+  topSection:{
+    width:"95%",
+    display:"flex",
+    flexDirection:"row",
+    alignItems:"center",
+    justifyContent:"space-between",
+    // marginTop:10,
+  },
+  cartContainer:{
+    display:"flex",
+    flexDirection:"row",
+    alignItems:"center",
+    position:"relative"
+  },
+  cartCount:{
+    alignSelf:"flex-end",
+    backgroundColor:"#2f2f2f",
+    color:"#f3f3f3",
+    borderRadius:20,
+    paddingHorizontal:5,
+    position:"absolute",
+    zIndex:1
   }
 })
