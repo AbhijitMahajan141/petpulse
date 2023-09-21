@@ -19,9 +19,9 @@ An All in one Pet app where users share Memorable, adorable and funny videos or 
 
 <img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/243eeeac-7ee1-4dbd-89f7-37adbc00039c" alt="alt text" width="300" height="600">
 <img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/0f2bf8c2-903e-4dd7-a853-431e329acdb4" alt="alt text" width="300" height="600">
+<img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/675d177b-1ab6-4f28-82c9-f470af47b42d" alt="alt text" width="300" height="600">
 
 <img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/627de33c-d2ca-408c-962c-189df1e4fcee" alt="alt text" width="300" height="600">
 <img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/7fc7970c-1410-4576-879b-9f157576114f" alt="alt text" width="300" height="600">
 <img src="https://github.com/AbhijitMahajan141/petpulse/assets/82993630/13f3f22d-cf0f-493e-96ef-7cf0ab14868c" alt="alt text" width="300" height="600">
-
 
