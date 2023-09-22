@@ -25,6 +25,7 @@ export const cartSlice = createSlice({
 
             if(existingItem){
                 existingItem.quantity += quantity;
+                existingItem.price += price;
             }else{
                 state.items.push({id,name,price,quantity});
             }

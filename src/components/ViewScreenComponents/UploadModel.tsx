@@ -144,7 +144,7 @@ const UploadModel = ({closeModal}:UploadModelProps) => {
               <View>
                 <Text>Tagline:</Text>
                 <TextInput style={[constantStyles.textInput,{width:300}]} multiline={true} numberOfLines={2} onChangeText={setTagLine} value={tagLine} placeholder='Eg. Enter a Tagline here.' />
-                <Pressable style={[constantStyles.buttonContainer,constantStyles.greenColor,{width:60,alignSelf:"center"}]} onPress={handlePost} >
+                <Pressable style={[constantStyles.buttonContainer,constantStyles.greenBgColor,{width:60,alignSelf:"center"}]} onPress={handlePost} >
                   {loading ? <ActivityIndicator size="small"/> : <Text style={[constantStyles.pureWhite,{fontWeight:"600",alignSelf:"center"}]}>Post</Text> }
                 </Pressable>
               </View>

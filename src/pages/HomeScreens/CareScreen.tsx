@@ -6,6 +6,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import ProductsComponent from '../../components/CareScreenComponent/ProductsComponent';
 import { food, toys } from '../../data';
+import { ModalComponent } from '../../components/ModalComponent';
+import Snackbar from 'react-native-snackbar';
+import CartModal from '../../components/CareScreenComponent/CartModal';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height - 200;
 const imageHeight = (Dimensions.get('window').height /4);
@@ -19,19 +22,24 @@ enum Buttons {
 
 const CareScreen = () => {
 
-  const cart = useSelector((state:RootState) => state.cart.items);
+  // const cart = useSelector((state:RootState) => state.cart.items);
   const itemsInCart = useSelector((state:RootState) => state.cart.items.length);
 
   const [button,setButton] = useState(Buttons.toy);
+
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const closeModal = () => {
+    setModalVisible(false);
+    Snackbar.show({text:"Post Uploaded Successfully!",duration:Snackbar.LENGTH_LONG}); 
+  };
 
   return (
     <View style={[constantStyles.container,{justifyContent:"flex-start"}]}>
       <View style={styles.topSection}>
         <Logo logoSize={30}/>
         <Pressable 
-        onPress={()=>{
-          console.log(cart);
-        }}
+        onPress={()=>setModalVisible(true)}
         style={styles.cartContainer}
         >
           <Text style={styles.cartCount}>{itemsInCart}</Text>
@@ -73,6 +81,13 @@ const CareScreen = () => {
           {button === Buttons.toy && <ProductsComponent imageHeight={imageHeight} data={toys} />}
           {button === Buttons.food && <ProductsComponent imageHeight={imageHeight} data={food}/>}
       </View>
+
+      <ModalComponent
+        children={<CartModal closeModal={closeModal} />} 
+        modalVisible={modalVisible} 
+        setModalVisible={setModalVisible} 
+      />
+
     </View>
   )
 }

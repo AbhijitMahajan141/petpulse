@@ -5,6 +5,7 @@ import ShortsSection from '../../components/ViewScreenComponents/ShortsSection';
 import UploadModel from '../../components/ViewScreenComponents/UploadModel';
 import { Logo, constantStyles } from '../../constants';
 import Snackbar from 'react-native-snackbar';
+import { ModalComponent } from '../../components/ModalComponent';
 // import { BackHandle } from '../../components/BackHandler';
 
 const ViewScreen: React.FC = () => {
@@ -54,7 +55,7 @@ const ViewScreen: React.FC = () => {
         { button === "shorts" && <ShortsSection/> }
       </View>
 
-      <View style={styles.centeredView}>
+      {/* <View style={styles.centeredView}>
       <Modal
         animationType="fade"
         transparent={true}
@@ -73,7 +74,14 @@ const ViewScreen: React.FC = () => {
           </View>
         </View>
       </Modal>
-      </View>
+      </View> */}
+
+      <ModalComponent 
+        children={<UploadModel closeModal={closeModal} />} 
+        modalVisible={modalVisible} 
+        setModalVisible={setModalVisible} 
+      />
+
     </View>
   )
 }
@@ -100,30 +108,30 @@ const styles = StyleSheet.create({
     marginTop:10,
     borderRadius:5
   },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // marginTop: 22,
-  },
-  modalView: {
-    // margin: 20,
-    display:"flex",
-    justifyContent:"space-between",
-    width:"95%",
-    height:"98%",
-    padding:10,
-    borderRadius: 10,
-    // padding: 35,
-    alignItems: 'center',
-    shadowColor: "#000000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 10,
-  },
+  // centeredView: {
+  //   flex: 1,
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   // marginTop: 22,
+  // },
+  // modalView: {
+  //   // margin: 20,
+  //   display:"flex",
+  //   justifyContent:"space-between",
+  //   width:"95%",
+  //   height:"98%",
+  //   padding:10,
+  //   borderRadius: 10,
+  //   // padding: 35,
+  //   alignItems: 'center',
+  //   shadowColor: "#000000",
+  //   shadowOffset: {
+  //     width: 0,
+  //     height: 2,
+  //   },
+  //   shadowOpacity: 0.25,
+  //   shadowRadius: 4,
+  //   elevation: 10,
+  // },
 
 })
