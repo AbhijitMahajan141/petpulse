@@ -34,23 +34,23 @@ const CartModal = ({closeModal}:UploadModelProps) => {
             (
                 <>
                 <View style={styles.itemsContainer}>
-                    <Text style={styles.headerText}>Name</Text>
-                    <Text style={styles.headerText}>Amount</Text>
-                    <Text style={styles.headerText}>Quantity</Text>
+                    <Text style={[styles.headerText,constantStyles.brownColor]}>Name</Text>
+                    <Text style={[styles.headerText,constantStyles.brownColor]}>Amount</Text>
+                    <Text style={[styles.headerText,constantStyles.brownColor]}>Quantity</Text>
                 </View>
                 <View style={[styles.itemsContainer,{flexDirection:"column"}]}>
                     {cart.map((item)=>(
                     <View key={item.id} style={styles.itemsContainer}>
-                        <Text style={{width:"20%",maxWidth:"33%"}}>{item.name}</Text>
-                        <Text style={{width:"25%"}}>{item.price}</Text>
-                        <Text style={{width:"10%"}}>{item.quantity}</Text>
+                        <Text style={[constantStyles.brownColor,{width:"20%",maxWidth:"33%"}]}>{item.name}</Text>
+                        <Text style={[{width:"25%"},constantStyles.brownColor]}>{item.price}</Text>
+                        <Text style={[{width:"10%"},constantStyles.brownColor]}>{item.quantity}</Text>
                     </View>
                     ))}
 
                     <View style={styles.itemsContainer}>
-                        <Text>Total</Text>
-                        <Text>{}</Text>
-                        <Text>{}</Text>
+                        <Text style={constantStyles.brownColor}>Total</Text>
+                        <Text style={constantStyles.brownColor}>{}</Text>
+                        <Text style={constantStyles.brownColor}>{}</Text>
                     </View>
 
                     <View style={{display:"flex",flexDirection:"row",columnGap:20}}>
@@ -72,7 +72,7 @@ const CartModal = ({closeModal}:UploadModelProps) => {
                 </>
             )
             :
-            (<Text style={[styles.headerText,{textAlign:"center"}]}>Your Cart is Empty. Lets Buy Something!</Text>)
+            (<Text style={[styles.headerText,constantStyles.brownColor,{textAlign:"center"}]}>Your Cart is Empty. Lets Buy Something!</Text>)
         }
         </View>
     </View>
