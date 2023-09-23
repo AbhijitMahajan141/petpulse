@@ -30,8 +30,8 @@ const CareScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const closeModal = () => {
+    Snackbar.show({text:"Order Has Been Placed!!!",duration:Snackbar.LENGTH_LONG});  
     setModalVisible(false);
-    Snackbar.show({text:"Post Uploaded Successfully!",duration:Snackbar.LENGTH_LONG}); 
   };
 
   return (

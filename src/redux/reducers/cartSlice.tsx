@@ -36,11 +36,12 @@ export const cartSlice = createSlice({
             state.items = state.items.filter(item => item.id.toString() !== itemIdToRemove);
         },
 
-        updateCartItemQuantity:(state,action:PayloadAction<{itemId: string; quantity:number}>)=>{
+        updateCartItemQuantity:(state,action:PayloadAction<{itemId: number; quantity:number}>)=>{
             const {itemId, quantity} = action.payload;
-            const itemToUpdate = state.items.find(item => item.id.toString() === itemId);
+            const itemToUpdate = state.items.find(item => item.id.toString() === itemId.toString());
             if(itemToUpdate){
                 itemToUpdate.quantity = quantity;
+                
             }
         },
 
