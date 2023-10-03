@@ -92,7 +92,7 @@ const PostsSection = () => {
 
         loading ? < ActivityIndicator size="large"/> 
         :
-        <>
+        <View>
         
           <FlatList
             style={styles.flatlist}
@@ -101,9 +101,15 @@ const PostsSection = () => {
             renderItem={({ item }) => (
               <View style={ switchView ? styles.colContainer :styles.rowContainer}>
                 {item.map((post) => (
-                  <View key={post.fileName}>
+                  <View key={post.fileName} style={{backgroundColor:"#2f2f3f",borderRadius:10,marginBottom:5}}>
+                    {switchView ? 
+                      <Text style={[constantStyles.pureWhite,{alignSelf:"center",marginTop:5}]}>{post.fileName}</Text>
+                    :null}
                     {renderGridItem({ item: post })}
-                  </View>
+                    {switchView ?
+                      <Text style={[constantStyles.pureWhite,{alignSelf:"center",marginBottom:5}]}>{post.tagLine}</Text>
+                    :null}
+                    </View>
                 ))}
               </View>
             )}
@@ -112,7 +118,7 @@ const PostsSection = () => {
             }
           />
 
-        </>
+        </View>
       }
     </View>
   )
@@ -133,11 +139,15 @@ const styles = StyleSheet.create({
     backgroundColor:"#2f2f2f",
     borderRadius:10,
     justifyContent:"flex-start",
-    padding:10
+    paddingBottom:25,
+    paddingTop:5,
+    paddingHorizontal:10,
+    height:"100%",
   },
   flatlist:{
     width:"100%",
     display:"flex",
+    marginBottom:10,
   },
   rowContainer: {
     flexDirection: 'row',
@@ -145,7 +155,8 @@ const styles = StyleSheet.create({
   },
   colContainer:{
     flexDirection:"column",
-    width:"100%",    
+    width:"100%",
+    marginBottom:15   
   },
   switchViewContainer:{
     width:"100%",
@@ -153,7 +164,8 @@ const styles = StyleSheet.create({
     flexDirection:"row",
     alignItems:"center",
     justifyContent:"space-between",
-    marginBottom:10
+    paddingBottom:5
+    // marginBottom:10
     // backgroundColor:"#fff"
   },
   

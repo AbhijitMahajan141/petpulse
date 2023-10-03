@@ -28,7 +28,7 @@ const VideoItem = ({ short, loading }: { short: Shorts; loading: boolean }) => {
   return(
   <View key={short.fileName} style={{width:"100%",height:SCREEN_HEIGHT}}>
   <View style={styles.individualVideo}>
-    <Text>{short.fileName}</Text>
+    <Text style={constantStyles.pureWhite}>{short.fileName}</Text>
     {loading && !videoLoaded ? (
       <ActivityIndicator size="large" />
     ) : (
@@ -44,7 +44,7 @@ const VideoItem = ({ short, loading }: { short: Shorts; loading: boolean }) => {
       />
     )}
     <View style={styles.postText}>
-      <Text>
+      <Text style={constantStyles.pureWhite}>
         {short.tagLine}
       </Text>
     </View>
